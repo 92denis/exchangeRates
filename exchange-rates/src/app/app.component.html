@@ -4,7 +4,7 @@
     <div class="panel-body">
       <div class="row">
         <select>
-              <option></option>
+              <option *ngFor="let currency of currencies" value={{currency}}> {{currency}}</option>
        </select>
       </div>
       <div class="row">
