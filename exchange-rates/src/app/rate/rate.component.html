@@ -1,13 +1,13 @@
 <div class="clearfix">
-    <table class="table table-bordered" *ngFor ="let rate of rates">
+    <table class="table table-bordered" >
       <thead>
         <tr>
           <th>День</th>
-          <th>{{rate.Cur_Abbreviation}}</th>
+          <th>Валюта</th>
         </tr>
       </thead>
       <tbody>
-        <tr >
+        <tr *ngFor ="let rate of rates">
           <td>{{rate.Date}}</td>
           <td>{{rate.Cur_OfficialRate}}</td>
         </tr>
