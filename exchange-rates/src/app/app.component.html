@@ -3,12 +3,12 @@
     <div class="panel-heading"></div>
     <div class="panel-body">
       <div class="row">
-        <select>
-              <option *ngFor="let currency of currencies" value={{currency.Cur_Abbreviation}}> {{currency.Cur_Abbreviation}}</option>
+        <select [(ngModel)]="selectedCurrency">
+              <option *ngFor="let currency of currencies" [ngValue]="currency.Cur_ID"> {{currency.Cur_Abbreviation}}</option>
        </select>
       </div>
       <div class="row">
-        <app-rate></app-rate>
+        <app-rate [CurId] = "selectedCurrency" ></app-rate>
       </div>
     </div>
   </div>

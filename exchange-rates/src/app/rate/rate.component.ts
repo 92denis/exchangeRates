@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CurrencyService } from '../currency.service';
 import { Rate } from '../rate';
 
@@ -8,7 +8,7 @@ import { Rate } from '../rate';
   styleUrls: ['./rate.component.css']
 })
 export class RateComponent implements OnInit {
-
+  @Input() CurId: number;
   rates: Rate[] = [];
   constructor(private currencyService: CurrencyService) { }
 

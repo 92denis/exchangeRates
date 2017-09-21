@@ -9,7 +9,7 @@ import { Currency } from './currency'
 })
 
 export class AppComponent implements OnInit {
-  selectedCurrency = null;
+  // selectedCurrency = null;
   currencies: Currency[] = [];
   constructor(private currencyService: CurrencyService) { }
 
