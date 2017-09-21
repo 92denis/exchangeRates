@@ -3,7 +3,7 @@
     <div class="panel-heading"></div>
     <div class="panel-body">
       <div class="row">
-        <select [(ngModel)]="selectedCurrency">
+      Выберите валюту: <select [(ngModel)]="selectedCurrency">
               <option *ngFor="let currency of currencies" [ngValue]="currency.Cur_ID"> {{currency.Cur_Abbreviation}}</option>
        </select>
       </div>

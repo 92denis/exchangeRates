@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CurrencyService } from '../currency.service';
 import { Rate } from '../rate';
 
@@ -9,13 +9,20 @@ import { Rate } from '../rate';
 })
 export class RateComponent implements OnInit {
   @Input() CurId: number;
+  cur: string;
   rates: Rate[] = [];
   constructor(private currencyService: CurrencyService) { }
 
-  ngOnInit() {
-    this.currencyService.getRate().subscribe((data) => {
+  ngOnChanges(changes: SimpleChanges) {
+
+    this.cur = changes.CurId.currentValue;
+    this.currencyService.getRate(this.cur).subscribe((data) => {
       this.rates = data.json()
     });
+
+  }
+
+  ngOnInit() {
   }
 }
 
