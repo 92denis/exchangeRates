@@ -9,5 +9,8 @@ export class CurrencyService {
   getData() {
     return this.http.get('http://www.nbrb.by/API/ExRates/Currencies');
   }
+  getRate(){
+    return this.http.get('http://www.nbrb.by/API/ExRates/Rates');
+  }
 
 }
