@@ -10,14 +10,13 @@ import { Currency } from './currency'
 
 export class AppComponent implements OnInit {
 
-  currencies = ["USD", "EUR", "RUR"];
-  currenciesData: Currency[] = [];
 
+  currencies: Currency[] = [];
   constructor(private currencyService: CurrencyService) { }
 
   ngOnInit(): void {
-
-    this.currencyService.getData().subscribe((data) => this.currenciesData = data.json());
-    console.log();
+    this.currencyService.getData().subscribe((data) => {
+      this.currencies = data.json()
+    });
   }
 }
