@@ -7,6 +7,9 @@ import {CurrencyService } from './currency.service'
 import { AppComponent } from './app.component';
 import { RateComponent } from './rate/rate.component';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +18,8 @@ import { RateComponent } from './rate/rate.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule
   ],
   providers: [CurrencyService],
   bootstrap: [AppComponent]
