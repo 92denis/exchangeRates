@@ -1,14 +1,14 @@
 <div class="container">
   <div class="panel panel-default">
-    <div class="panel-heading"></div>
+    <div class="panel-heading">Курсы валют</div>
     <div class="panel-body">
       <div class="row">
-      Выберите валюту: <select [(ngModel)]="selectedCurrency">
+        Выберите валюту: <select [(ngModel)]="selectedCurrency">
               <option *ngFor="let currency of currencies" [ngValue]="currency.Cur_ID"> {{currency.Cur_Abbreviation}}</option>
        </select>
       </div>
       <div class="row">
-        <app-rate [CurId] = "selectedCurrency" ></app-rate>
+        <app-rate [CurId]="selectedCurrency"></app-rate>
       </div>
     </div>
   </div>

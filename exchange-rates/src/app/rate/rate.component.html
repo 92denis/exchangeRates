@@ -1,16 +1,21 @@
 <div class="clearfix">
-    <table class="table table-bordered" >
-      <thead>
-        <tr>
-          <th>День</th>
-          <th>{{CurId}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor ="let rate of rates">
-          <td>{{rate.Date}}</td>
-          <td>{{rate.Cur_OfficialRate}}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="panel ">
+    <div class="panel-heading">Запрашиваемый период <input placeholder="Начальная дата" [(ngModel)]="startDate" >
+      <input placeholder="Конечная дата" [(ngModel)]="endDate" ></div>
+
   </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>День</th>
+        <th>{{CurId}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rate of rates">
+        <td>{{rate.Date}}</td>
+        <td>{{rate.Cur_OfficialRate}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -10,13 +10,15 @@ import { Rate } from '../rate';
 export class RateComponent implements OnInit {
   @Input() CurId: number;
   cur: string;
+  startDate: string;
+  endDate: string;
   rates: Rate[] = [];
   constructor(private currencyService: CurrencyService) { }
 
   ngOnChanges(changes: SimpleChanges) {
 
     this.cur = changes.CurId.currentValue;
-    this.currencyService.getRate(this.cur).subscribe((data) => {
+    this.currencyService.getRate(this.cur, this.startDate, this.endDate).subscribe((data) => {
       this.rates = data.json()
     });
 
