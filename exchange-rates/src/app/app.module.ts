@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 import {CurrencyService } from './currency.service'
 
 import { AppComponent } from './app.component';
+import { RateComponent } from './rate/rate.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RateComponent
   ],
   imports: [
     BrowserModule,
