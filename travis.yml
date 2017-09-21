@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "node"
+before_install:
+  - cd exchange-rates
+install:
+  - npm install
+script: 
+- ng build --prod --base-href https://92denis.github.io/exchangeRates/
+branches:
+only:
+    - master
+deploy:
+  local_dir: ./dist
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master
