@@ -10,7 +10,7 @@ export class CurrencyService {
     return this.http.get('http://www.nbrb.by/API/ExRates/Currencies');
   }
   getRate(){
-    return this.http.get('http://www.nbrb.by/API/ExRates/Rates');
+    return this.http.get('http://www.nbrb.by/API/ExRates/Rates?Periodicity=0');
   }
 
 }
