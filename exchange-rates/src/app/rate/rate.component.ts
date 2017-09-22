@@ -15,7 +15,9 @@ export class RateComponent implements OnInit {
   startDate: Date;
   endDate: Date;
   rates: Rate[] = [];
-  Cur_Date: string[];
+  OfficialRate: number[] = [];
+  public dates: string[] = [];
+  
 
   constructor(private currencyService: CurrencyService, private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('en');
@@ -29,8 +31,9 @@ export class RateComponent implements OnInit {
     this.cur = changes.CurId.currentValue;
     this.currencyService.getRate(this.cur, start, end).subscribe((data) => {
       this.rates = data.json();
-     this.Cur_Date = this.rates.map(x => x.Cur_Date.toString());
-     
+      this.dates = this.rates.map(x => x.Date.toString());
+      this.OfficialRate = this.rates.map(x => x.Cur_OfficialRate);
+      
     });
 
   }
@@ -39,7 +42,7 @@ export class RateComponent implements OnInit {
   }
   // lineChart
   public lineChartData: Array<any> = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
+    { data: this.OfficialRate, label: 'Курс' },
   ];
 
   public lineChartOptions: any = {
@@ -49,7 +52,6 @@ export class RateComponent implements OnInit {
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
       borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'

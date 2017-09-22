@@ -1,5 +1,5 @@
 export class Rate {
-    private Cur_ID: number;
-    private Cur_Date: Date;
-    private Cur_OfficialRate: number;
+    public Cur_ID: number;
+    public Date: Date;
+    public Cur_OfficialRate: number;
 }

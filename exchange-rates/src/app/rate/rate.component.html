@@ -28,11 +28,12 @@
       </tr>
     </tbody>
   </table>
-  <div class="col-md-6">
+  <div class="col-md-12">
       <div style="display: block;">
       <canvas baseChart width="400" height="400"
+      [data]="OfficialRate"
                   [datasets]="lineChartData"
-                  [labels]="lineChartLabels"
+                  [labels]="dates"
                   [options]="lineChartOptions"
                   [colors]="lineChartColors"
                   [legend]="lineChartLegend"
