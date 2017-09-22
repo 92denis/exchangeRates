@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import 'hammerjs';
 
 @Injectable()
 export class CurrencyService {
@@ -12,8 +13,8 @@ export class CurrencyService {
   // getRate(){
   //   return this.http.get('https://www.nbrb.by/API/ExRates/Rates?Periodicity=0');
   // }
-  getRate(id: string, startDate : string, endDate: string){
-    return this.http.get('https://www.nbrb.by/API/ExRates/Rates/Dynamics/'+id+'?startDate='+ startDate+'&endDate='+ endDate);
+  getRate(id: string, start : string, end: string){
+    return this.http.get('https://www.nbrb.by/API/ExRates/Rates/Dynamics/'+id+'?startDate='+start+'&endDate='+end);
   }
 
 }
