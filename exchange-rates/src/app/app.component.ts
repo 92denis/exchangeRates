@@ -9,9 +9,10 @@ import { Currency } from './currency'
 })
 
 export class AppComponent implements OnInit {
-  selectedCurrency : Currency;
+  selectedCurrency : number;
   currencies: Currency[] = [];
-  constructor(private currencyService: CurrencyService) { }
+  constructor(private currencyService: CurrencyService) { 
+  }
 
   ngOnInit(): void {
     this.currencyService.getData().subscribe((data) => {
