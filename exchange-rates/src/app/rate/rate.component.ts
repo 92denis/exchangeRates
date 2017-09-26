@@ -25,15 +25,14 @@ export class RateComponent implements OnInit {
 
   constructor(private currencyService: CurrencyService, private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('en');
-    this.startDate = new Date();
-    this.endDate = new Date();
+   
     console.log('create RateComponent');
     console.log(this.lineChartData);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     this.changeStartDate = changes.startDate.currentValue;
-    this.changeEndDate = changes.EndDate.currentValue;
+    this.changeEndDate = changes.endDate.currentValue;
     let start = this.changeStartDate.getFullYear() + '-' + (this.changeStartDate.getMonth() + 1) + '-' + this.changeStartDate.getDate();
     let end = this.changeEndDate.getFullYear() + '-' + (this.changeEndDate.getMonth() + 1) + '-' + this.changeEndDate.getDate();
     this.cur = changes.CurId.currentValue;

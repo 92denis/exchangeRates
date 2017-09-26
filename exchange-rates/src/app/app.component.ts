@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   endDate: Date;
   currencies: Currency[] = [];
   constructor(private currencyService: CurrencyService) { 
+    this.startDate = new Date();
+    this.endDate = new Date();
   }
 
   ngOnInit(): void {
