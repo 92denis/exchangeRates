@@ -15,14 +15,18 @@ export class RateComponent implements OnInit {
   startDate: Date;
   endDate: Date;
   rates: Rate[] = [];
-  OfficialRate: number[] = [];
+  public OfficialRate: number[] = [];
   public dates: string[] = [];
-  
+  public lineChartData: Array<any> = [
+    { data: [], label: undefined },
+  ];
 
   constructor(private currencyService: CurrencyService, private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('en');
     this.startDate = new Date();
     this.endDate = new Date();
+    console.log('create RateComponent');
+    console.log(this.lineChartData);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -33,17 +37,20 @@ export class RateComponent implements OnInit {
       this.rates = data.json();
       this.dates = this.rates.map(x => x.Date.toString());
       this.OfficialRate = this.rates.map(x => x.Cur_OfficialRate);
-      
+      this.lineChartData = [
+        { data: this.OfficialRate, label: 'Курс' },
+      ];
+      console.log('RateComponent subscribe');
+      console.log(this.lineChartData);
     });
-
+    console.log('RateComponent ngOnChanges');
+    console.log(this.lineChartData);
   }
 
   ngOnInit() {
   }
   // lineChart
-  public lineChartData: Array<any> = [
-    { data: this.OfficialRate, label: 'Курс' },
-  ];
+
 
   public lineChartOptions: any = {
     responsive: true
