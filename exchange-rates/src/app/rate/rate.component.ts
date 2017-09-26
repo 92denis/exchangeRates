@@ -37,9 +37,9 @@ export class RateComponent implements OnInit {
       this.rates = data.json();
       this.dates = this.rates.map(x => x.Date.toString());
       this.OfficialRate = this.rates.map(x => x.Cur_OfficialRate);
-      this.lineChartData = [
-        { data: this.OfficialRate, label: 'Курс' },
-      ];
+      this.lineChartData[0] = 
+        { data: this.OfficialRate, label: 'Курс' };
+  
       console.log('RateComponent subscribe');
       console.log(this.lineChartData);
     });
