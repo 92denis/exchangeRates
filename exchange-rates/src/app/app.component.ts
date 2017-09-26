@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
     this.startDate = new Date();
     this.startDate.setMonth(this.startDate.getMonth() - 1);
     this.endDate = new Date();
+    this.selectedCurrency = 298;
 
   }
 
