@@ -12,9 +12,11 @@ import { DateAdapter } from '@angular/material';
 export class RateComponent implements OnInit {
   @Input() CurId: number;
   cur: string;
-  startDate: Date;
-  endDate: Date;
+  @Input() startDate: Date;
+  @Input() endDate: Date;
   rates: Rate[] = [];
+  changeStartDate: Date;
+  changeEndDate: Date;
   public OfficialRate: number[] = [];
   public dates: string[] = [];
   public lineChartData: Array<any> = [
@@ -30,21 +32,24 @@ export class RateComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    let start = this.startDate.getFullYear() + '-' + (this.startDate.getMonth() + 1) + '-' + this.startDate.getDate();
-    let end = this.endDate.getFullYear() + '-' + (this.endDate.getMonth() + 1) + '-' + this.endDate.getDate();
+    this.changeStartDate = changes.startDate.currentValue;
+    this.changeEndDate = changes.EndDate.currentValue;
+    let start = this.changeStartDate.getFullYear() + '-' + (this.changeStartDate.getMonth() + 1) + '-' + this.changeStartDate.getDate();
+    let end = this.changeEndDate.getFullYear() + '-' + (this.changeEndDate.getMonth() + 1) + '-' + this.changeEndDate.getDate();
     this.cur = changes.CurId.currentValue;
     this.currencyService.getRate(this.cur, start, end).subscribe((data) => {
       this.rates = data.json();
       this.dates = this.rates.map(x => x.Date.toString());
       this.OfficialRate = this.rates.map(x => x.Cur_OfficialRate);
-      this.lineChartData[0] = 
+      this.lineChartData[0] =
         { data: this.OfficialRate, label: 'Курс' };
-  
+
       console.log('RateComponent subscribe');
       console.log(this.lineChartData);
     });
     console.log('RateComponent ngOnChanges');
     console.log(this.lineChartData);
+    console.log(this.changeStartDate);
   }
 
   ngOnInit() {

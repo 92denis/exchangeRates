@@ -10,6 +10,8 @@ import { Currency } from './currency'
 
 export class AppComponent implements OnInit {
   selectedCurrency : number;
+  startDate: Date;
+  endDate: Date;
   currencies: Currency[] = [];
   constructor(private currencyService: CurrencyService) { 
   }
