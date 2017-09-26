@@ -13,7 +13,7 @@ export class CurrencyService {
   // getRate(){
   //   return this.http.get('https://www.nbrb.by/API/ExRates/Rates?Periodicity=0');
   // }
-  getRate(id: string, start : string, end: string){
+  getRate(id: number, start : string, end: string){
     return this.http.get('https://www.nbrb.by/API/ExRates/Rates/Dynamics/'+id+'?startDate='+start+'&endDate='+end);
   }
 
