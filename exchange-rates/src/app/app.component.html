@@ -3,13 +3,11 @@
 </md-toolbar>
 <div class="container">
   <div class="row">
-    <div class="display"> Выберите валюту:</div>
-    <md-select placeholder="Валюта" [(ngModel)]="selectedCurrency">
-      <md-option *ngFor="let currency of currenciesCurrent" [value]="currency">
+    <md-select class="md-select" placeholder="Валюта" [(ngModel)]="selectedCurrency">
+      <md-option class="md-select" *ngFor="let currency of currenciesCurrent" [value]="currency">
         {{currency.Cur_Name}}
       </md-option>
     </md-select>
-    <div class="display"> Запрашиваемый период:</div>
     <md-form-field>
       <input mdInput [(ngModel)]="startDate" [mdDatepicker]="start" placeholder="Начальная дата">
       <md-datepicker-toggle mdSuffix [for]="start"></md-datepicker-toggle>
