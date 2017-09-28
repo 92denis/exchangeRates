@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { RateComponent } from './rate/rate.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDatepickerModule, MatInputModule, MatFormFieldModule, MatNativeDateModule, MatTabsModule, MatToolbarModule, MatSelectModule, MatRadioModule} from '@angular/material';
+import { MatDatepickerModule,MatButtonModule, MatInputModule,MatMenuModule, MatFormFieldModule, MatNativeDateModule, MatTabsModule, MatToolbarModule, MatSelectModule, MatRadioModule,MatIconModule} from '@angular/material';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -31,7 +31,10 @@ import { ChartsModule } from 'ng2-charts';
     MatTabsModule,
     MatToolbarModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [CurrencyService],
   bootstrap: [AppComponent]
