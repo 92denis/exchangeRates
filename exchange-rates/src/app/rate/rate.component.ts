@@ -42,6 +42,11 @@ export class RateComponent implements OnInit {
   constructor(private currencyService: CurrencyService, private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('en');
   }
+  
+  typesOfChart: Array<any> = [
+    { type: "line", name: "Линейный" },
+    { type: "bar", name: "Столбцы" }
+  ];
 
   ngOnChanges(changes: SimpleChanges) {
     if (!this.currency || !this.startDate || !this.endDate) {

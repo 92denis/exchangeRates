@@ -1,8 +1,17 @@
 <div class="clearfix">
   <md-tab-group>
+
     <md-tab label="График">
       <div class="col-md-12">
         <div style="display: block;">
+          <div class="row">
+            <h5> Тип графика:</h5>
+            <md-radio-group class="example-radio-group" [(ngModel)]="lineChartType">
+              <md-radio-button checked class="example-radio-button" *ngFor="let type of typesOfChart" [value]="type.type">
+                {{type.name}}
+              </md-radio-button>
+            </md-radio-group>
+          </div>
           <canvas baseChart width="400" height="200" [datasets]="lineChartData" [labels]="dates" [options]="lineChartOptions" [colors]="lineChartColors"
             [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
         </div>
