@@ -44,6 +44,9 @@ export class RateComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    if (!this.currency || !this.startDate || !this.endDate) {
+      return;
+    }
     let start = this.startDate.getFullYear() + '-' + (this.startDate.getMonth() + 1) + '-' + this.startDate.getDate();
     let end = this.endDate.getFullYear() + '-' + (this.endDate.getMonth() + 1) + '-' + this.endDate.getDate();
 
@@ -52,7 +55,7 @@ export class RateComponent implements OnInit {
       this.dates = this.rates.map(x => x.Date.toString());
       this.OfficialRate = this.rates.map(x => x.Cur_OfficialRate);
       this.lineChartData[0] =
-        { data: this.OfficialRate, label: this.currency.Cur_Abbreviation};
+        { data: this.OfficialRate, label: this.currency.Cur_Name };
     });
   }
 
