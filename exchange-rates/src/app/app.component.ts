@@ -9,18 +9,17 @@ import { Currency } from './currency';
 })
 
 export class AppComponent implements OnInit {
-  selectedCurrency: number;
+  selectedCurrency: Currency;
   startDate: Date;
   endDate: Date;
   currenciesCurrent: Currency[] = [];
   currencies: Currency[] = [];
+
   constructor(private currencyService: CurrencyService) {
     this.startDate = new Date();
     this.startDate.setMonth(this.startDate.getMonth() - 1);
     this.endDate = new Date();
-    this.selectedCurrency = 298;
-
-  }
+    }
 
   ngOnInit(): void {
     this.currencyService.getData().subscribe((data) => {

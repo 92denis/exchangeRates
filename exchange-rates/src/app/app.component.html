@@ -4,7 +4,7 @@
     <div class="panel-body">
       <div class="row">
         Выберите валюту: <select [(ngModel)]="selectedCurrency">
-              <option *ngFor="let currency of currenciesCurrent" [ngValue]="currency.Cur_ID"> {{currency.Cur_Name}}</option>
+              <option *ngFor="let currency of currenciesCurrent" [ngValue] = "currency"> {{currency.Cur_Name}}</option>
        </select>
        <div class="panel ">
           <div class="panel-heading">Запрашиваемый период
@@ -24,7 +24,7 @@
       </div>
 
             <div class="row">
-        <app-rate [CurId]="selectedCurrency" [startDate] = "startDate" [endDate] = "endDate" ></app-rate>
+        <app-rate  [currency]="selectedCurrency" [startDate] = "startDate" [endDate] = "endDate" ></app-rate>
       </div>
     </div>
    </div>

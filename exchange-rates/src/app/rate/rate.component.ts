@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CurrencyService } from '../currency.service';
 import { Rate } from '../rate';
+import { Currency } from '../currency';
 import { DateAdapter } from '@angular/material';
 
 
@@ -10,7 +11,7 @@ import { DateAdapter } from '@angular/material';
   styleUrls: ['./rate.component.css']
 })
 export class RateComponent implements OnInit {
-  @Input() CurId: number;
+  @Input() currency: Currency;
   @Input() startDate: Date;
   @Input() endDate: Date;
 
@@ -40,20 +41,18 @@ export class RateComponent implements OnInit {
 
   constructor(private currencyService: CurrencyService, private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('en');
-    console.log('create RateComponent');
-    console.log(this.lineChartData);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     let start = this.startDate.getFullYear() + '-' + (this.startDate.getMonth() + 1) + '-' + this.startDate.getDate();
     let end = this.endDate.getFullYear() + '-' + (this.endDate.getMonth() + 1) + '-' + this.endDate.getDate();
 
-    this.currencyService.getRate(this.CurId, start, end).subscribe((data) => {
+    this.currencyService.getRate(this.currency.Cur_ID, start, end).subscribe((data) => {
       this.rates = data.json();
       this.dates = this.rates.map(x => x.Date.toString());
       this.OfficialRate = this.rates.map(x => x.Cur_OfficialRate);
       this.lineChartData[0] =
-        { data: this.OfficialRate, label: 'Курс' };
+        { data: this.OfficialRate, label: this.currency.Cur_Abbreviation};
     });
   }
 
