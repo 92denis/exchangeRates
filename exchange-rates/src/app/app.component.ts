@@ -15,11 +15,13 @@ export class AppComponent implements OnInit {
   currenciesCurrent: Currency[] = [];
   currencies: Currency[] = [];
 
+
   constructor(private currencyService: CurrencyService) {
     this.startDate = new Date();
     this.startDate.setMonth(this.startDate.getMonth() - 1);
     this.endDate = new Date();
-    }
+    this.selectedCurrency = new Currency();
+  }
 
   ngOnInit(): void {
     this.currencyService.getData().subscribe((data) => {
@@ -27,6 +29,7 @@ export class AppComponent implements OnInit {
       this.currenciesCurrent = this.currencies.filter(current => {
         return new Date(current.Cur_DateEnd) >= new Date();
       });
+      this.selectedCurrency = this.currenciesCurrent.find(item => item.Cur_ID === 298);
     });
 
   }

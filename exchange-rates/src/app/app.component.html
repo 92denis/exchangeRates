@@ -6,7 +6,7 @@
         Выберите валюту: <select [(ngModel)]="selectedCurrency">
               <option *ngFor="let currency of currenciesCurrent" [ngValue] = "currency"> {{currency.Cur_Name}}</option>
        </select>
-       <div class="panel ">
+        <div class="panel">
           <div class="panel-heading">Запрашиваемый период
             <md-form-field>
               <input mdInput [(ngModel)]="startDate" [mdDatepicker]="start" placeholder="Начальная дата">
@@ -19,14 +19,14 @@
               <md-datepicker #end></md-datepicker>
             </md-form-field>
           </div>
-      
+
         </div>
       </div>
 
-            <div class="row">
-        <app-rate  [currency]="selectedCurrency" [startDate] = "startDate" [endDate] = "endDate" ></app-rate>
+      <div class="row">
+        <app-rate [currency] = "selectedCurrency" [startDate] = "startDate" [endDate] = "endDate"></app-rate>
       </div>
     </div>
-   </div>
- 
+  </div>
+
 </div>
