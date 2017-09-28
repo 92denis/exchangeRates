@@ -1,5 +1,13 @@
 <div class="clearfix">
   <md-tab-group>
+    <md-tab label="График">
+      <div class="col-md-12">
+        <div style="display: block;">
+          <canvas baseChart width="400" height="200" [datasets]="lineChartData" [labels]="dates" [options]="lineChartOptions" [colors]="lineChartColors"
+            [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </md-tab>
     <md-tab label="Таблица">
       <table class="table table-bordered">
         <thead>
@@ -15,14 +23,6 @@
           </tr>
         </tbody>
       </table>
-    </md-tab>
-    <md-tab label="График">
-      <div class="col-md-12">
-        <div style="display: block;">
-          <canvas baseChart width="400" height="200" [datasets]="lineChartData" [labels]="dates" [options]="lineChartOptions" [colors]="lineChartColors"
-            [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-        </div>
-      </div>
     </md-tab>
   </md-tab-group>
 
