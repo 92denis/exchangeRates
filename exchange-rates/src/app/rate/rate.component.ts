@@ -57,7 +57,7 @@ export class RateComponent implements OnInit {
 
     this.currencyService.getRate(this.currency.Cur_ID, start, end).subscribe((data) => {
       this.rates = data.json();
-      this.dates = this.rates.map(x => x.Date.toString());
+      this.dates = this.rates.map(x => x.Date.toString().substring(0,10));
       this.OfficialRate = this.rates.map(x => x.Cur_OfficialRate);
       this.lineChartData[0] =
         { data: this.OfficialRate, label: this.currency.Cur_Name };
