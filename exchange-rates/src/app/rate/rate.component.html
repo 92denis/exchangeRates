@@ -23,12 +23,15 @@
           <tr>
             <th>День</th>
             <th>{{currency.Cur_Abbreviation}}</th>
+            <th>Изменения курса</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let rate of rates">
             <td>{{rate.Date}}</td>
             <td>{{rate.Cur_OfficialRate}}</td>
+            <td><span *ngIf="rate.delta<0" class="red-delta">{{rate.delta}}</span>
+              <span *ngIf="rate.delta>=0" class="green-delta">{{rate.delta}}</span> </td>
           </tr>
         </tbody>
       </table>

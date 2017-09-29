@@ -42,7 +42,7 @@ export class RateComponent implements OnInit {
   constructor(private currencyService: CurrencyService, private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('en');
   }
-  
+
   typesOfChart: Array<any> = [
     { type: "line", name: "Линейный" },
     { type: "bar", name: "Столбцы" }
@@ -57,7 +57,13 @@ export class RateComponent implements OnInit {
 
     this.currencyService.getRate(this.currency.Cur_ID, start, end).subscribe((data) => {
       this.rates = data.json();
-      this.dates = this.rates.map(x => x.Date.toString().substring(0,10));
+
+      for (let i = 1; i < this.rates.length; i++) {
+        this.rates[i].delta = +(this.rates[i].Cur_OfficialRate - this.rates[i - 1].Cur_OfficialRate).toFixed(4);
+      }
+
+      this.dates = this.rates.map(x => x.Date.toString().substring(0, 10));
+      
       this.OfficialRate = this.rates.map(x => x.Cur_OfficialRate);
       this.lineChartData[0] =
         { data: this.OfficialRate, label: this.currency.Cur_Name };
