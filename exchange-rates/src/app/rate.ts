@@ -1,6 +1,6 @@
 export class Rate {
     public Cur_ID: number;
-    public Date: Date;
+    public Date: string;
     public Cur_OfficialRate: number;
     public delta: number;
 }

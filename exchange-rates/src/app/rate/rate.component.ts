@@ -62,8 +62,13 @@ export class RateComponent implements OnInit {
         this.rates[i].delta = +(this.rates[i].Cur_OfficialRate - this.rates[i - 1].Cur_OfficialRate).toFixed(4);
       }
 
+      for (let j = 0; j < this.rates.length; j++) {
+        this.rates[j].Date = this.rates[j].Date.substring(0, 10);
+      }
+
       this.dates = this.rates.map(x => x.Date.toString().substring(0, 10));
-      
+
+
       this.OfficialRate = this.rates.map(x => x.Cur_OfficialRate);
       this.lineChartData[0] =
         { data: this.OfficialRate, label: this.currency.Cur_Name };
