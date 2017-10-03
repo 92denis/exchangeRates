@@ -1,12 +1,10 @@
 language: node_js
 node_js:
   - "node"
-before_install:
-  - cd exchange-rates
 install:
   - npm install
 script: 
-- ng build --prod --base-href https://92denis.github.io/exchangeRates/
+- ng build --prod
 branches:
 only:
     - master
