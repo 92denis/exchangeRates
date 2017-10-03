@@ -54,8 +54,13 @@ export class RateComponent implements OnInit {
     }
     let start = this.startDate.getFullYear() + '-' + (this.startDate.getMonth() + 1) + '-' + this.startDate.getDate();
     let end = this.endDate.getFullYear() + '-' + (this.endDate.getMonth() + 1) + '-' + this.endDate.getDate();
+    this.getRates(this.currency.Cur_ID, start, end);
+    this.lineChartData[0] =
+    { data: this.OfficialRate, label: this.currency.Cur_Name };
+  }
 
-    this.currencyService.getRate(this.currency.Cur_ID, start, end).subscribe((data) => {
+  getRates(id, start, end) {
+    this.currencyService.getRate(id, start, end).subscribe((data) => {
       this.rates = data.json();
 
       for (let i = 1; i < this.rates.length; i++) {
@@ -70,11 +75,11 @@ export class RateComponent implements OnInit {
 
 
       this.OfficialRate = this.rates.map(x => x.Cur_OfficialRate);
-      this.lineChartData[0] =
-        { data: this.OfficialRate, label: this.currency.Cur_Name };
+     
+        return this.OfficialRate
     });
-  }
 
+  }
   ngOnInit() {
   }
 
