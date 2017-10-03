@@ -30,8 +30,8 @@
           <tr *ngFor="let rate of rates">
             <td>{{rate.Date}}</td>
             <td>{{rate.Cur_OfficialRate}}</td>
-            <td><span *ngIf="rate.delta<0" class="red-delta">{{rate.delta}}  <span> <img src="http://s1.iconbird.com/ico/0612/MustHave/w16h161339196021StockIndexDown16x16.png"></span></span>
-              <span *ngIf="rate.delta>=0" class="green-delta">{{rate.delta}} <span> <img src="http://s1.iconbird.com/ico/0612/MustHave/w16h161339196030StockIndexUp16x16.png"></span></span>
+            <td><span *ngIf="rate.delta<0" class="red-delta">{{rate.delta}}  <span> <img src="https://s1.iconbird.com/ico/0612/MustHave/w16h161339196021StockIndexDown16x16.png"></span></span>
+              <span *ngIf="rate.delta>=0" class="green-delta">{{rate.delta}} <span> <img src="https://s1.iconbird.com/ico/0612/MustHave/w16h161339196030StockIndexUp16x16.png"></span></span>
             </td>
           </tr>
         </tbody>
