@@ -4,7 +4,7 @@ node_js:
 install:
   - npm install
 script: 
-- ng build --prod
+- ng build --prod --base-href https://92denis.github.io/exchangeRates/
 branches:
 only:
     - master
