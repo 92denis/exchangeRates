@@ -12,18 +12,11 @@
             </md-radio-group>
           </div>
 
-          <div class="col-md-4">
-            <canvas baseChart width="400" height="200" [datasets]="lineChartData" [labels]="dates" [options]="lineChartOptions" [colors]="lineChartColors"
+          <div class="col-md-12">
+            <canvas baseChart width="400" height="200" [datasets]="lineChar" [labels]="datesRate" [options]="lineChartOptions" [colors]="lineChartColors"
               [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
           </div>
-          <div class="col-md-4">
-            <canvas baseChart width="400" height="200" [datasets]="lineChartData" [labels]="dates" [options]="lineChartOptions" [colors]="lineChartColors"
-              [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-          </div>
-          <div class="col-md-4">
-            <canvas baseChart width="400" height="200" [datasets]="lineChartData" [labels]="dates" [options]="lineChartOptions" [colors]="lineChartColors"
-              [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-          </div>
+        
         </div>
       </div>
     </md-tab>
