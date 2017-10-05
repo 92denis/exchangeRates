@@ -12,9 +12,6 @@ export class RateChartComponent implements OnInit {
   @Input() start: string;
   @Input() end: string;
 
-  public usa: number[] = [];
-  public rus: number[] = [];
-  public euro: number[] = [];
   rates: Rate[] = [];
 
   public dates: string[] = [];
@@ -60,30 +57,19 @@ export class RateChartComponent implements OnInit {
 
   constructor(private currencyService: CurrencyService) { }
 
+  getCurrency(curId: number, index: number, curName: string) {
+    this.currencyService.getRate(curId, this.start, this.end).subscribe((data) => {
+      this.rates = data.json();
+      this.dates = this.rates.map(x => x.Date.toString().substring(0, 10));
+      this.lineChar[index] = { data: this.rates.map(x => x.Cur_OfficialRate), label: curName };
+
+    });
+  }
+
   ngOnInit() {
-    this.currencyService.getRate(145, this.start, this.end).subscribe((data) => {
-      this.rates = data.json();
-      this.dates = this.rates.map(x => x.Date.toString().substring(0, 10));
-      this.usa = this.rates.map(x => x.Cur_OfficialRate);
-      this.lineChar[0] = { data: this.usa, label: 'USA' };
-
-    });
-    this.currencyService.getRate(298, this.start, this.end).subscribe((data) => {
-      this.rates = data.json();
-
-      this.rus = this.rates.map(x => x.Cur_OfficialRate);
-      this.dates = this.rates.map(x => x.Date.toString().substring(0, 10));
-      this.lineChar[1] =
-        { data: this.rus, label: 'RUB' };
-
-    });
-    this.currencyService.getRate(292, this.start, this.end).subscribe((data) => {
-      this.rates = data.json();
-      this.dates = this.rates.map(x => x.Date.toString().substring(0, 10));
-      this.euro = this.rates.map(x => x.Cur_OfficialRate);
-      this.lineChar[2] =
-        { data: this.euro, label: 'EUR' };
-    });
+    this.getCurrency(145, 0, 'USA');
+    this.getCurrency(298, 1, 'RUB');
+    this.getCurrency(292, 2, 'EUR');
   }
   public chartClicked(e: any): void {
     console.log(e);
