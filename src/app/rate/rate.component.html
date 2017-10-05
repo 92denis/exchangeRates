@@ -11,12 +11,6 @@
               </md-radio-button>
             </md-radio-group>
           </div>
-
-          <div class="col-md-12">
-            <canvas baseChart width="400" height="200" [datasets]="lineChar" [labels]="datesRate" [options]="lineChartOptions" [colors]="lineChartColors"
-              [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-          </div>
-        
         </div>
       </div>
     </md-tab>
@@ -51,5 +45,5 @@
     </md-tab>
   </md-tab-group>
 
-
+  <rate-chart>  </rate-chart>
 </div>
