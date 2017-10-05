@@ -1,6 +1,6 @@
 <div class="clearfix">
   <md-tab-group>
-    <md-tab label="Топ валюты">
+    <md-tab label="График">
       <div class="col-md-12">
         <div style="display: block;">
           <div class="row">
@@ -11,13 +11,6 @@
               </md-radio-button>
             </md-radio-group>
           </div>
-        </div>
-      </div>
-    </md-tab>
-    <md-tab label="График">
-      <div class="col-md-12">
-        <div style="display: block;">
-
           <canvas baseChart width="400" height="200" [datasets]="lineChartData" [labels]="dates" [options]="lineChartOptions" [colors]="lineChartColors"
             [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
         </div>
@@ -45,5 +38,5 @@
     </md-tab>
   </md-tab-group>
 
-  <rate-chart>  </rate-chart>
+  <rate-chart [start]= "start" [end]= "end"> </rate-chart>
 </div>

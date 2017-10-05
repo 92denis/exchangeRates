@@ -85,5 +85,11 @@ export class RateChartComponent implements OnInit {
         { data: this.euro, label: 'EUR' };
     });
   }
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
 
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
 }
