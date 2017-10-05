@@ -11,12 +11,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule,MatButtonModule, MatInputModule,MatMenuModule, MatFormFieldModule, MatNativeDateModule, MatTabsModule, MatToolbarModule, MatSelectModule, MatRadioModule,MatIconModule} from '@angular/material';
 
 import { ChartsModule } from 'ng2-charts';
+import { RateChartComponent } from './rate-chart/rate-chart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RateComponent
+    RateComponent,
+    RateChartComponent
   ],
   imports: [
     BrowserModule,
