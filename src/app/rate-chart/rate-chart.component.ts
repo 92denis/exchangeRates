@@ -9,8 +9,8 @@ import { Rate } from '../rate';
 })
 export class RateChartComponent implements OnInit {
 
-  @Input() start: string;
-  @Input() end: string;
+  @Input() start: Date;
+  @Input() end: Date;
 
   rates: Rate[] = [];
 
