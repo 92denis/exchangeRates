@@ -19,7 +19,9 @@ export class CurrencyService {
     return mappedObservable;
   }
 
-  getRate(id: number, start: string, end: string): Observable<Rate[]> {
+  getRate(id: number, startDate: Date ,endDate : Date): Observable<Rate[]> {
+    let start = startDate.getFullYear() + '-' + (startDate.getMonth() + 1) + '-' + startDate.getDate();
+    let end = endDate.getFullYear() + '-' + (endDate.getMonth() + 1) + '-' + endDate.getDate();
 
     let observable = this.http.get('https://www.nbrb.by/API/ExRates/Rates/Dynamics/' + id + '?startDate=' + start + '&endDate=' + end);
     let mappedObservable = observable.map((response) => {

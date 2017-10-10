@@ -39,9 +39,7 @@ export class RateComponent implements OnInit {
   ];
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
-  start: string;
- end: string;
-
+ 
   constructor(private currencyService: CurrencyService, private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('en');
 
@@ -56,10 +54,7 @@ export class RateComponent implements OnInit {
     if (!this.currency || !this.startDate || !this.endDate) {
       return;
     }
-    this.start = this.startDate.getFullYear() + '-' + (this.startDate.getMonth() + 1) + '-' + this.startDate.getDate();
-    this.end = this.endDate.getFullYear() + '-' + (this.endDate.getMonth() + 1) + '-' + this.endDate.getDate();
-
-    this.currencyService.getRate(this.currency.Cur_ID, this.start, this.end).subscribe((data) => {
+      this.currencyService.getRate(this.currency.Cur_ID, this.startDate, this.endDate).subscribe((data) => {
       this.rates = data;
 
       for (let i = 1; i < this.rates.length; i++) {
