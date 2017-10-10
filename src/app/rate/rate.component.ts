@@ -16,8 +16,7 @@ export class RateComponent {
   @Input() endDate: Date;
 
   rates: Rate[] = [];
- 
-  public OfficialRate: number[] = [];
+  
   public dates: string[] = [];
 
   public lineChartData: Array<any> = [
@@ -56,21 +55,15 @@ export class RateComponent {
     }
       this.currencyService.getRate(this.currency.Cur_ID, this.startDate, this.endDate).subscribe((data) => {
       this.rates = data;
-
-      for (let i = 1; i < this.rates.length; i++) {
-        this.rates[i].delta = +(this.rates[i].Cur_OfficialRate - this.rates[i - 1].Cur_OfficialRate).toFixed(4);
-      }
-
+     
       for (let j = 0; j < this.rates.length; j++) {
         this.rates[j].Date = this.rates[j].Date.substring(0, 10);
       }
 
       this.dates = this.rates.map(x => x.Date.toString().substring(0, 10));
 
-
-      this.OfficialRate = this.rates.map(x => x.Cur_OfficialRate);
       this.lineChartData[0] =
-        { data: this.OfficialRate, label: this.currency.Cur_Name };
+        { data: this.rates.map(x => x.Cur_OfficialRate), label: this.currency.Cur_Name };
     });
   }
 
