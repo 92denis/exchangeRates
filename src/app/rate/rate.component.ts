@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CurrencyService } from '../currency.service';
 import { Rate } from '../rate';
 import { Currency } from '../currency';
@@ -10,7 +10,7 @@ import { DateAdapter } from '@angular/material';
   templateUrl: './rate.component.html',
   styleUrls: ['./rate.component.css']
 })
-export class RateComponent implements OnInit {
+export class RateComponent {
   @Input() currency: Currency;
   @Input() startDate: Date;
   @Input() endDate: Date;
@@ -72,19 +72,6 @@ export class RateComponent implements OnInit {
       this.lineChartData[0] =
         { data: this.OfficialRate, label: this.currency.Cur_Name };
     });
-  }
-
-  ngOnInit() {
-   
-  }
-
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
   }
 
 }
