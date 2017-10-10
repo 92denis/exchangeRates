@@ -26,6 +26,10 @@ export class CurrencyService {
     let observable = this.http.get('https://www.nbrb.by/API/ExRates/Rates/Dynamics/' + id + '?startDate=' + start + '&endDate=' + end);
     let mappedObservable = observable.map((response) => {
       this.rates = <Rate[]>response.json();
+       
+      for (let i = 0 ; i < this.rates.length; i++) {
+        this.rates[i].Date =this.rates[i].Date.substring(0, 10);
+      } 
 
       for (let i = 1; i < this.rates.length; i++) {
         this.rates[i].delta = +(this.rates[i].Cur_OfficialRate - this.rates[i - 1].Cur_OfficialRate).toFixed(4);

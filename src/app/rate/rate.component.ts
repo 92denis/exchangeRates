@@ -56,11 +56,7 @@ export class RateComponent {
       this.currencyService.getRate(this.currency.Cur_ID, this.startDate, this.endDate).subscribe((data) => {
       this.rates = data;
      
-      for (let j = 0; j < this.rates.length; j++) {
-        this.rates[j].Date = this.rates[j].Date.substring(0, 10);
-      }
-
-      this.dates = this.rates.map(x => x.Date.toString().substring(0, 10));
+      this.dates = this.rates.map(rate => rate.Date);
 
       this.lineChartData[0] =
         { data: this.rates.map(x => x.Cur_OfficialRate), label: this.currency.Cur_Name };
