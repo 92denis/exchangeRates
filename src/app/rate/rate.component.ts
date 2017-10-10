@@ -16,7 +16,7 @@ export class RateComponent implements OnInit {
   @Input() endDate: Date;
 
   rates: Rate[] = [];
-
+ 
   public OfficialRate: number[] = [];
   public dates: string[] = [];
 
@@ -40,7 +40,7 @@ export class RateComponent implements OnInit {
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
   start: string;
-  end: string;
+ end: string;
 
   constructor(private currencyService: CurrencyService, private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('en');
@@ -60,7 +60,7 @@ export class RateComponent implements OnInit {
     this.end = this.endDate.getFullYear() + '-' + (this.endDate.getMonth() + 1) + '-' + this.endDate.getDate();
 
     this.currencyService.getRate(this.currency.Cur_ID, this.start, this.end).subscribe((data) => {
-      this.rates = data.json();
+      this.rates = data;
 
       for (let i = 1; i < this.rates.length; i++) {
         this.rates[i].delta = +(this.rates[i].Cur_OfficialRate - this.rates[i - 1].Cur_OfficialRate).toFixed(4);
@@ -80,7 +80,7 @@ export class RateComponent implements OnInit {
   }
 
   ngOnInit() {
-
+   
   }
 
   // events

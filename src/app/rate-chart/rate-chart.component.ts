@@ -59,7 +59,7 @@ export class RateChartComponent implements OnInit {
 
   getCurrency(curId: number, index: number, curName: string) {
     this.currencyService.getRate(curId, this.start, this.end).subscribe((data) => {
-      this.rates = data.json();
+      this.rates = data;
       this.dates = this.rates.map(x => x.Date.toString().substring(0, 10));
       this.lineChar[index] = { data: this.rates.map(x => x.Cur_OfficialRate), label: curName };
 
