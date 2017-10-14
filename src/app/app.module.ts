@@ -12,13 +12,15 @@ import { MatDatepickerModule,MatButtonModule, MatInputModule,MatMenuModule, MatF
 
 import { ChartsModule } from 'ng2-charts';
 import { RateChartComponent } from './rate-chart/rate-chart.component';
+import { FiterCurrensiesPipe } from './fiter-currensies.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RateComponent,
-    RateChartComponent
+    RateChartComponent,
+    FiterCurrensiesPipe
   ],
   imports: [
     BrowserModule,

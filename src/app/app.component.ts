@@ -26,10 +26,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.currencyService.getCurrency().subscribe((data) => {
       this.currencies = data;
-      this.currenciesCurrent = this.currencies.filter(current => {
-        return new Date(current.Cur_DateEnd) >= new Date();
-      });
-      this.selectedCurrency = this.currenciesCurrent.find(item => item.Cur_ID === 298);
+      this.selectedCurrency = this.currencies.find(item => item.Cur_ID === 298);
     });
 
   }

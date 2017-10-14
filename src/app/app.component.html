@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row">
     <md-select class="md-select" placeholder="Валюта" [(ngModel)]="selectedCurrency">
-      <md-option class="md-select" *ngFor="let currency of currenciesCurrent" [value]="currency">
+      <md-option class="md-select" *ngFor="let currency of currencies | fiterCurrensies" [value]="currency">
         {{currency.Cur_Name}}
       </md-option>
     </md-select>

@@ -27,6 +27,7 @@ export class CurrencyService {
     let mappedObservable = observable.map((response) => {
       this.rates = <Rate[]>response.json();
        
+      
       for (let i = 0 ; i < this.rates.length; i++) {
         this.rates[i].Date =this.rates[i].Date.substring(0, 10);
       } 
