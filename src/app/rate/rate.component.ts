@@ -16,7 +16,8 @@ export class RateComponent {
   @Input() endDate: Date;
 
   rates: Rate[] = [];
-  
+  isMarked = false;
+  isChecked = true;
   public dates: string[] = [];
 
   public lineChartData: Array<any> = [
@@ -38,7 +39,7 @@ export class RateComponent {
   ];
   public lineChartLegend: boolean = true;
   public lineChartType: string = 'line';
- 
+
   constructor(private currencyService: CurrencyService, private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('en');
 
@@ -53,15 +54,22 @@ export class RateComponent {
     if (!this.currency || !this.startDate || !this.endDate) {
       return;
     }
-      this.currencyService.getRate(this.currency.Cur_ID, this.startDate, this.endDate).subscribe((data) => {
+    this.currencyService.getRate(this.currency.Cur_ID, this.startDate, this.endDate).subscribe((data) => {
       this.rates = data;
-     
+
       this.dates = this.rates.map(rate => rate.Date);
 
       this.lineChartData[0] =
         { data: this.rates.map(x => x.Cur_OfficialRate), label: this.currency.Cur_Name };
     });
   }
-
+  multiChart() {
+    this.isMarked = true;
+    this.isChecked = false;
+  }
+  lineChart() {
+    this.isMarked = false;
+    this.isChecked = true;
+  }
 }
 

@@ -28,3 +28,13 @@
   display: flex;
   flex-direction: row;
   }
+  
+.hide{
+  display: none;
+}
+
+.right-icon{
+  display: block;
+  float: right;
+  margin-top: 20px;
+}
