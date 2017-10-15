@@ -53,7 +53,7 @@ export class RateChartComponent implements OnInit {
     }
   ];
   public lineChartLegend: boolean = true;
-  public lineChartType: string = 'line';
+  @Input() public lineChartType: string ;
 
   constructor(private currencyService: CurrencyService) { }
 
