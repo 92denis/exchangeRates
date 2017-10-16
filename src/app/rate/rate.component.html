@@ -23,7 +23,7 @@
           </div>
           <canvas [ngClass]="{'hide': isMarked}" baseChart width="400" height="200" [datasets]="lineChartData" [labels]="dates" [options]="lineChartOptions"
             [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
-          <rate-chart [ngClass]="{'hide': isChecked}" [start]="startDate" [end]="endDate" [lineChartType]="lineChartType"> </rate-chart>
+          <rate-chart [ngClass]="{'hide': isChecked}" [start]="startDate" [end]="endDate" [lineChartType]="lineChartType" [currensiesId]= '[145, 298,292]'> </rate-chart>
         </div>
       </div>
     </md-tab>

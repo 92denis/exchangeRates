@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CurrencyService } from '../currency.service';
 import { Rate } from '../rate';
+import { Currency } from '../currency';
 
 @Component({
   selector: 'rate-chart',
@@ -11,17 +12,12 @@ export class RateChartComponent implements OnInit {
 
   @Input() start: Date;
   @Input() end: Date;
-
+  @Input() currensiesId: number[] = [];
   rates: Rate[] = [];
-
   public dates: string[] = [];
 
-  public lineChar: Array<any> = [
-    { data: [], label: undefined },
-    { data: [], label: undefined },
-    { data: [], label: undefined }
-  ];
-
+  public lineChartData: Array<any> = [];
+  
   // lineChart
 
   public lineChartOptions: any = {
@@ -53,7 +49,7 @@ export class RateChartComponent implements OnInit {
     }
   ];
   public lineChartLegend: boolean = true;
-  @Input() public lineChartType: string ;
+  @Input() public lineChartType: string;
 
   constructor(private currencyService: CurrencyService) { }
 
@@ -61,21 +57,16 @@ export class RateChartComponent implements OnInit {
     this.currencyService.getRate(curId, this.start, this.end).subscribe((data) => {
       this.rates = data;
       this.dates = this.rates.map(x => x.Date);
-      this.lineChar[index] = { data: this.rates.map(x => x.Cur_OfficialRate), label: curName };
+      this.lineChartData[index] = { data: this.rates.map(x => x.Cur_OfficialRate), label: curName };
 
     });
   }
 
   ngOnInit() {
-    this.getCurrency(145, 0, 'USA');
-    this.getCurrency(298, 1, 'RUB');
-    this.getCurrency(292, 2, 'EUR');
-  }
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
+    this.lineChartData.pop();
+    for (let i = 0; i < this.currensiesId.length; i++) {
+      this.lineChartData.push({ data: [], label: undefined });
+      this.getCurrency(this.currensiesId[i], i, "USD");
+    }
   }
 }
