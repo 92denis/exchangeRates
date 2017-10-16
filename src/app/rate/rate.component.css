@@ -1,33 +1,11 @@
-.example-radio-group {
-    display: inline-flex;
-    flex-direction: row ;
-    margin-top: 30px;
-  }
-  
-  .example-radio-button {
-    margin:0 15px;
-  }
-  
-  .example-selected-value {
-    margin: 15px 0;
-    }
-  h5{
-    display: inline-block;
-    font-weight: bold;
-    font-size: 15px;
-    margin: 0;
-  }
+
   .red-delta{
     color: red;
   }
    .green-delta{
     color: green;
   }
-  span{
-    margin: auto 0;
-  display: flex;
-  flex-direction: row;
-  }
+ 
   
 .hide{
   display: none;
@@ -37,4 +15,10 @@
   display: block;
   float: right;
   margin-top: 20px;
+}
+
+span{
+  margin: auto 0;
+display: flex;
+flex-direction: row;
 }

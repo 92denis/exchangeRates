@@ -17,7 +17,7 @@ export class RateChartComponent implements OnInit {
   public dates: string[] = [];
 
   public lineChartData: Array<any> = [];
-  
+
   // lineChart
 
   public lineChartOptions: any = {
@@ -49,8 +49,12 @@ export class RateChartComponent implements OnInit {
     }
   ];
   public lineChartLegend: boolean = true;
-  @Input() public lineChartType: string;
+  public lineChartType: string = 'line';
 
+  typesOfChart: Array<any> = [
+    { type: "line", name: "Линейный" },
+    { type: "bar", name: "Столбцы" }
+  ];
   constructor(private currencyService: CurrencyService) { }
 
   getCurrency(curId: number, index: number, curName: string) {
@@ -66,7 +70,7 @@ export class RateChartComponent implements OnInit {
     this.lineChartData.pop();
     for (let i = 0; i < this.currensiesId.length; i++) {
       this.lineChartData.push({ data: [], label: undefined });
-      this.getCurrency(this.currensiesId[i], i, "USD");
+      this.getCurrency(this.currensiesId[i], i, `${i} Валюта`);
     }
   }
 }

@@ -4,12 +4,7 @@
       <div class="col-md-12">
         <div style="display: block;">
           <div class="row">
-            <h5> Тип графика:</h5>
-            <md-radio-group class="example-radio-group" [(ngModel)]="lineChartType">
-              <md-radio-button checked class="example-radio-button" *ngFor="let type of typesOfChart" [value]="type.type">
-                {{type.name}}
-              </md-radio-button>
-            </md-radio-group>
+   
             <span class="right-icon" *ngIf="isMarked == false">
               <button title="График Топ-валют" md-icon-button (click)="multiChart()">
                   <img width="24" alt="Simpleicons Business ascendant-bars-graphic" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Simpleicons_Business_ascendant-bars-graphic.svg/512px-Simpleicons_Business_ascendant-bars-graphic.svg.png"/>
@@ -21,9 +16,8 @@
               </button>
             </span>
           </div>
-          <canvas [ngClass]="{'hide': isMarked}" baseChart width="400" height="200" [datasets]="lineChartData" [labels]="dates" [options]="lineChartOptions"
-            [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
-          <rate-chart [ngClass]="{'hide': isChecked}" [start]="startDate" [end]="endDate" [lineChartType]="lineChartType" [currensiesId]= '[145, 298,292]'> </rate-chart>
+          <rate-chart [ngClass]="{'hide': isMarked}"  [start]="startDate" [end]="endDate"  [currensiesId]= '[currency.Cur_ID]'> </rate-chart>
+          <rate-chart [ngClass]="{'hide': isChecked}" [start]="startDate" [end]="endDate"  [currensiesId]= '[145,298,292]'> </rate-chart>
         </div>
       </div>
     </md-tab>
