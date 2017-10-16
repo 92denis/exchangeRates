@@ -8,7 +8,7 @@ import { Currency } from '../currency';
   templateUrl: './rate-chart.component.html',
   styleUrls: ['./rate-chart.component.css']
 })
-export class RateChartComponent implements OnInit {
+export class RateChartComponent {
 
   @Input() start: Date;
   @Input() end: Date;
@@ -55,6 +55,7 @@ export class RateChartComponent implements OnInit {
     { type: "line", name: "Линейный" },
     { type: "bar", name: "Столбцы" }
   ];
+
   constructor(private currencyService: CurrencyService) { }
 
   getCurrency(curId: number, index: number, curName: string) {
@@ -66,11 +67,13 @@ export class RateChartComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.lineChartData.pop();
+  ngOnChanges() {
+    
     for (let i = 0; i < this.currensiesId.length; i++) {
+      this.lineChartData.pop();
       this.lineChartData.push({ data: [], label: undefined });
       this.getCurrency(this.currensiesId[i], i, `${i} Валюта`);
     }
+
   }
 }
