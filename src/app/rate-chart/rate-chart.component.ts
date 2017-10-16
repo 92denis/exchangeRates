@@ -14,6 +14,7 @@ export class RateChartComponent {
   @Input() end: Date;
   @Input() currensiesId: number[] = [];
   rates: Rate[] = [];
+ 
   public dates: string[] = [];
 
   public lineChartData: Array<any> = [];
@@ -27,22 +28,6 @@ export class RateChartComponent {
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
       borderColor: 'rgba(148,159,177,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    },
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(77,83,96,1)'
-    },
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
@@ -63,17 +48,22 @@ export class RateChartComponent {
       this.rates = data;
       this.dates = this.rates.map(x => x.Date);
       this.lineChartData[index] = { data: this.rates.map(x => x.Cur_OfficialRate), label: curName };
-
     });
   }
 
   ngOnChanges() {
-    
     for (let i = 0; i < this.currensiesId.length; i++) {
       this.lineChartData.pop();
       this.lineChartData.push({ data: [], label: undefined });
-      this.getCurrency(this.currensiesId[i], i, `${i} Валюта`);
     }
+
+    this.currencyService.getCurrency().subscribe(currencies => {
+      for (let i = 0; i < this.currensiesId.length; i++) {
+        let activeCurrency = currencies.find(item => item.Cur_ID === this.currensiesId[i]);
+        this.getCurrency(this.currensiesId[i], i, activeCurrency.Cur_Name);
+      }
+    });
 
   }
 }
+
