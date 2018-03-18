@@ -12,7 +12,7 @@ export class CurrencyService {
   constructor(private http: Http) { }
 
   getCurrency(): Observable<Currency[]> {
-    let observable = this.http.get('https://www.nbrb.by/API/ExRates/Currencies');
+    let observable = this.http.get('http://www.nbrb.by/API/ExRates/Currencies');
     let mappedObservable = observable.map((response) => {
       this.currencies = <Currency[]>response.json(); return this.currencies;
     });
